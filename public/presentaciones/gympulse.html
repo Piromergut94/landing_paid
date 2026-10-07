@@ -93,6 +93,38 @@ body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle 
 .compact-grid article{min-height:clamp(170px,25vh,220px)}
 @media (max-width:1180px),(max-height:760px){.thesis-row,.engine-flow,.win-grid,.model-grid{grid-template-columns:repeat(2,1fr)}.gains-layout{grid-template-columns:1fr}.engine-core{flex-direction:column;align-items:flex-start}.engine-core small{margin-left:0;text-align:left}.recovery-product h2{font-size:clamp(42px,6vw,74px)}}
 @media (max-width:760px){.thesis-row,.engine-flow,.win-grid,.model-grid,.gains-grid{grid-template-columns:1fr}.thesis-row article,.win-grid article,.model-grid article{min-height:auto}.engine-core{align-items:flex-start}.gain-big b{font-size:38px}}
+@media (max-width:760px){
+  html,body{overflow:hidden;height:100%}
+  .deck{height:100dvh;min-height:0;overflow:hidden}
+  .slide{position:absolute;inset:0;width:100%;height:100%;min-height:0;overflow-x:hidden;overflow-y:auto;padding:20px 16px 108px;-webkit-overflow-scrolling:touch}
+  .slide.active{display:block}
+  .slide h1{font-size:34px;line-height:1.02;max-width:none}
+  .slide h2,.close h2,.recovery-product h2{font-size:28px;line-height:1.08;max-width:none}
+  .lead,.lead.compact,.close p{font-size:15px;line-height:1.4;max-width:none}
+  .kicker{font-size:11px;letter-spacing:.12em}
+  .slide.cover-image-slide.active{display:flex;align-items:center;justify-content:center;padding:12px 10px 88px}
+  .cover-full-image{width:100%;height:auto;max-height:calc(100dvh - 110px);object-fit:contain}
+  .pain-grid,.why-grid,.pilot-track,.orchestrated-flow,.orchestrated-results,.position-row,.industry-grid,.case-stats,.stack,.provider-row,.thesis-row,.engine-flow,.win-grid,.model-grid,.gains-grid{grid-template-columns:1fr}
+  .pain-grid article,.why-grid article,.pilot-track article,.thesis-row article,.win-grid article,.model-grid article,.engine-flow article,.gains-grid article,.orchestrated-flow article,.case-stats article,.stack article,.definition-card,.reject-box{min-height:0}
+  .industry-grid div,.provider-row div,.orchestrated-results div{height:auto;min-height:52px;justify-content:flex-start;padding:14px 16px;font-size:16px}
+  .provider-row{grid-template-columns:1fr 1fr}
+  .engine-core,.orchestrator-band{flex-direction:column;align-items:flex-start}
+  .engine-core small,.orchestrator-band small{margin-left:0;max-width:none;text-align:left}
+  .engine-core b,.thesis-row b,.win-grid b,.model-grid b,.gains-grid b,.pilot-track b{font-size:22px}
+  .gain-big b{font-size:28px}
+  .model-claim,.positioning,.big-line,.bottom-claim{font-size:22px;text-align:left}
+  .definition-card h3,.reject-box b{font-size:26px}
+  .case-stats b,.uplift-result strong{font-size:34px}
+  .uplift-math article{flex-direction:column;align-items:flex-start}
+  .uplift-math article b,.uplift-math article.logic b{text-align:left;font-size:22px;max-width:none}
+  .cta-row{flex-direction:column;width:100%}
+  .cta-row a{display:block;text-align:center;padding:14px 16px}
+  .close{justify-content:flex-start;padding-top:8px}
+  .close-logo{width:112px;margin-bottom:16px}
+  .close-qualify{justify-content:flex-start}
+  .hud{left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));justify-content:center}
+  .notes{left:10px;right:10px;width:auto;bottom:72px}
+}
 
   </style>
 </head>
@@ -253,6 +285,7 @@ function show(i){
   counter.textContent=`${current+1} / ${slides.length}`;
   progress.style.width=`${((current+1)/slides.length)*100}%`;
   notesText.textContent=slides[current].dataset.notes||'';
+  slides[current].scrollTop=0;
   history.replaceState(null,'',`#${current+1}`);
 }
 function next(){show(current+1)}

@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
           source: "/",
           destination: "/paid_pitch_landing_v4.html",
         },
+        {
+          source: "/presentaciones/:name([^.]*)",
+          destination: "/presentaciones/:name.html",
+        },
       ],
     };
   },

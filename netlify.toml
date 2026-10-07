@@ -3,3 +3,7 @@
   to = "/paid_pitch_landing_v4.html"
   status = 200
   force = true
+
+[[edge_functions]]
+  path = "/presentaciones/*"
+  function = "presentaciones"
